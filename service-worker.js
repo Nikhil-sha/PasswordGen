@@ -2,13 +2,13 @@ self.addEventListener('install', event => {
 	event.waitUntil(
 		caches.open('password-gen-cache').then(cache => {
 			return cache.addAll([
-        '/',
-        '/index.html',
-        '/styles/main.css',
-        '/scripts/app.js',
-        '/scripts/manifest.json',
-        'icons/icon-192x192.png',
-        'icons/icon-512x512.png'
+        '/PasswordGen',
+        '/PasswordGen/index.html',
+        '/PasswordGen/styles/main.css',
+        '/PasswordGen/scripts/app.js',
+        '/PasswordGen/scripts/manifest.json',
+        '/PasswordGen/icons/icon-192x192.png',
+        '/PasswordGen/icons/icon-512x512.png'
       ]);
 		})
 	);
