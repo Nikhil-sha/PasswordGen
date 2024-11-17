@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="font-['Mitr'] font-light">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Password Generator</title>
+
+	<meta name="description" content="Generate strong, secure passwords with our easy-to-use password generator tool. Customize length, character types, and copy passwords instantly.">
+	<meta name="keywords" content="password generator, strong passwords, secure passwords, password tool, generate passwords, random password">
+	<meta name="author" content="Nikhil Sharma">
+	<meta property="og:title" content="Password Generator - Secure Your Accounts">
+	<meta property="og:description" content="Easily create strong, secure passwords with our password generator. Customize length and character types to fit your needs.">
+	<meta property="og:url" content="URL_TO_YOUR_SITE">
+	<meta name="robots" content="index, follow">
+
+	<link rel="stylesheet" href="/styles/main.css">
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#F9FAFB">
+	<link rel="icon" href="icons/icon-192x192.png">
+	<link rel="apple-touch-icon" href="icons/icon-192x192.png">
+	<meta name="apple-mobile-web-app-title" content="PasswordGen">
+	<meta name="mobile-web-app-capable" content="yes">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-900 p-6">
+	<div class="max-w-lg mx-auto">
+		<h1 class="text-2xl font-medium mb-6 text-center">Password Generator</h1>
+
+		<div id="notificationContainer">
+		</div>
+
+		<div id="resultDiv" class="hidden border border-gray-200 rounded-lg p-4 bg-white mb-6">
+			<h2 class="text-lg font-normal mb-4">
+				Generated Password
+			</h2>
+			<div class="flex flex-col space-y-4">
+				<label for="passwordValue" class="text-sm font-light">Password:</label>
+				<input id="passwordValue" type="text" placeholder="Enter or generate password" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-400 outline-none" />
+				<button id="copyBtn" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 focus:ring-2 focus:ring-green-400">
+					Copy Password
+				</button>
+			</div>
+		</div>
+
+		<div class="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+			<h2 class="text-lg font-normal mb-4 flex flex-row items-center justify-start gap-3">
+				Generate Password
+				<svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
+					<path d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z" />
+				</svg>
+			</h2>
+			<form id="form">
+				<div class="flex flex-col space-y-4">
+					<!-- Password Length -->
+					<label for="length" class="text-sm font-light">Password Length:</label>
+					<input id="length" name="length" type="number" min="4" max="20" value="12" class="p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-400 outline-none" required />
+
+					<!-- Options -->
+					<div>
+						<label class="text-sm font-light mb-2 block">Options:</label>
+						<div id="optionsContainer" class="grid grid-cols-1 gap-3">
+						</div>
+					</div>
+
+					<!-- Generate Button -->
+					<button type="submit" class="w-full flex items-center justify-center gap-2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600 focus:ring-2 focus:ring-blue-400">
+						Generate Password
+						<svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512">
+							<path fill="#ffffff" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+						</svg>
+					</button>
+				</div>
+			</form>
+
+			<!-- Generated Password -->
+			<div id="generatedPassword" class="mt-4 p-2 bg-gray-100 border border-gray-300 rounded text-center text-gray-700 font-light break-all"></div>
+		</div>
+
+		<!-- Password Manager -->
+		<!-- <div class="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+			<h2 class="text-lg font-normal mb-4">Password Manager</h2>
+			<div class="flex flex-col space-y-4">
+				<div>
+					<label for="passwordLabel" class="text-sm font-light">Label:</label>
+					<input id="passwordLabel" type="text" placeholder="e.g., Email" class="w-full mt-1 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-400 outline-none" />
+				</div>
+				<div>
+					<label for="passwordValue" class="text-sm font-light">Password:</label>
+					<input id="passwordValue" type="text" placeholder="Enter or generate password" class="w-full mt-1 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-400 outline-none" />
+				</div>
+				<button id="saveBtn" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 focus:ring-2 focus:ring-green-400">
+					Save Password
+				</button>
+			</div>
+		</div> -->
+
+		<!-- <div class="border border-gray-200 rounded-lg p-4 bg-white">
+			<h2 class="text-lg font-normal mb-4">Your Passwords</h2>
+			<div class="flex flex-col space-y-4">
+				<ul id="passwordList" class="space-y-3 mt-4"></ul>
+			</div>
+		</div> -->
+	</div>
+
+	<script type="module" src="/scripts/app.js"></script>
+</body>
+
+</html>

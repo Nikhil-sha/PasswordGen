@@ -1,0 +1,23 @@
+{
+	"manifest_version": 2,
+	"name": "Password Generator",
+	"short_name": "PasswordGen",
+	"version": "1.0.0",
+	"description": "Generate strong, secure passwords with our easy-to-use password generator tool. Customize length, character types, and copy passwords instantly.",
+	"start_url": "/index.html",
+	"display": "standalone",
+	"background_color": "#F9FAFB",
+	"theme_color": "#F9FAFB",
+	"icons": [
+		{
+			"src": "/icons/icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+    },
+		{
+			"src": "/icons/icon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+    }
+  ]
+}
